@@ -1,0 +1,32 @@
+.input-file {
+    cursor: pointer;
+    color: #00b1ca;
+}
+.input-file:hover {
+    color: #df0c2f;
+}
+
+.add-image {
+    .image {
+        img {
+            max-width: 600px;
+            border: 1px solid black;
+        }
+        
+        margin-left: 100px;
+    }
+
+    .actions {
+        display: flex;
+        justify-content: center;
+        height: 100%;
+        
+        .my-input {
+            text-align: center;
+            margin: auto;
+            margin-right: 100px;
+        }
+    }
+
+
+}

@@ -1,4 +1,4 @@
-<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+<!-- <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
     <mat-card class="box" *ngIf="!auth_svc.isLogged">
       <mat-card-header>
         <mat-card-title>Log in</mat-card-title>
@@ -21,4 +21,24 @@
         <mat-card-title>Bonjour {{auth_svc.user.username}}</mat-card-title>
       </mat-card-header>
     </mat-card>
+</div> -->
+
+<div class="wrapper">
+  <div class="logo">
+      <img src="../../../../assets/wave_login.png" alt="">
+  </div>
+  <div class="text-center mt-4 name">
+      E-surf Login
+  </div>
+  <form class="p-3 mt-3" [formGroup]="userForm" (ngSubmit)="onLogin()">
+      <div class="form-field d-flex align-items-center">
+          <span class="far fa-user"></span>
+          <input type="text" name="userName" id="userName" placeholder="Username" formControlName="username">
+      </div>
+      <div class="form-field d-flex align-items-center">
+          <span class="fas fa-key"></span>
+          <input type="password" name="password" id="pwd" placeholder="Password" formControlName="password">
+      </div>
+      <button class="btn mt-3">Login</button>
+  </form>
 </div>

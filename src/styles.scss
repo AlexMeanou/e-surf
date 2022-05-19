@@ -2,3 +2,13 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.bg-image{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+body {
+    background-color: rgba(223, 211, 187, 0.514);
+}

@@ -5,6 +5,8 @@
 /tmp
 /out-tsc
 /bazel-out
+src/assets/files/
+api/files/
 
 # Node
 /node_modules

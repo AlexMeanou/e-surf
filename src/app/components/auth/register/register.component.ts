@@ -15,13 +15,14 @@ export class RegisterComponent implements OnInit {
   password : string;
   email: string;
   userForm : FormGroup;
+  spot = this.spots[1]
 
   constructor(private auth_svc: AuthService, private fb: FormBuilder) { 
     this.userForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
       email: ['', Validators.required],
-      spots: [''],
+      spot: [''],
     });
   }
 

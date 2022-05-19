@@ -17,14 +17,6 @@ export class UserService {
 
   save_img_bdd(formData: any) {
     console.log(formData)
-    // var myFormData = new FormData();
-    // const headers = new HttpHeaders();
-    // headers.append('Content-Type', 'multipart/form-data');
-    // headers.append('Accept', 'application/json');
-    // myFormData.append('image', image);
-    // /* Image Post Request */
-    // console.log(myFormData)
-
     this.http.post('http://127.0.0.1:8000/users/images', formData).subscribe(data => {
       //Check success message
       console.log(data);

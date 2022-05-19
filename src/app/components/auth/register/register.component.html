@@ -1,4 +1,4 @@
-<div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
+<!-- <div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
     <mat-card class="box">
       <mat-card-header>
         <mat-card-title>Register</mat-card-title>
@@ -21,8 +21,8 @@
   
           <mat-form-field class="example-full-width">
             <mat-label>Choissisez votre spot de surf</mat-label>
-            <mat-select>
-              <mat-option [value]="spot" *ngFor="let spot of spots">{{spot}}
+            <mat-select formControlName="spot">
+              <mat-option  [value]="spot" *ngFor="let spot of spots">{{spot}}
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -33,4 +33,28 @@
   
       </form>
     </mat-card>
+  </div> -->
+
+<div class="wrapper">
+  <div class="logo">
+      <img src="../../../../assets/wave_login.png" alt="">
   </div>
+  <div class="text-center mt-4 name">
+      E-surf Registering
+  </div>
+  <form class="p-3 mt-3" [formGroup]="userForm" (ngSubmit)="onRegister()">
+      <div class="form-field d-flex align-items-center">
+          <span class="far fa-user"></span>
+          <input type="text" name="userName" id="userName" placeholder="Username" formControlName="username">
+      </div>
+      <div class="form-field d-flex align-items-center">
+          <span class="fas fa-key"></span>
+          <input type="password" name="password" id="pwd" placeholder="Password" formControlName="password">
+      </div>
+      <div class="form-field d-flex align-items-center">
+        <span class="far fa-user"></span>
+        <input type="text" name="email" id="email" placeholder="Email" formControlName="email">
+      </div>
+      <button class="btn mt-3">Register</button>
+  </form>
+</div>

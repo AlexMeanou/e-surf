@@ -1,27 +1,34 @@
-# ESurf
+# Lancement de l'application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.2.
+Afin de lancer ce projet il vous faudra passer par 3 étapes de préparation :
 
-## Development server
+## Lancer la BDD
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Il vous faudra télécharger mongodb si vous ne le possédez pas déjà. Voici comment faire si tel est le cas :
 
-## Code scaffolding
+Télécharger l'archive via l'adresse suivante : https://www.mongodb.com/try/download/community avant de l'extraire à la racine de votre projet
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Ensuite aller à la racine du projet et exécuter ces commandes :
 
-## Build
+    mkdir PFE
+    ./mongodb/bin/mongod --dbpath ./PFE/
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Lancer l'api
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Dans un terminal à part, aller dans le dossier s'appelant `api` et exécuter les commandes suivantes :
 
-## Running end-to-end tests
+    
+    pip install -r ../requirement.txt
+    uvicorn main:app
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Lancer l'application angular
 
-## Further help
+Dans un terminal à part, placer vous à la racine du projet et lancer les commandes suivantes :
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+    npm install
+    npm start
+
+## Accéder à votre application
+
+A ce stade vous posséder une application fonctionelle accessible à l'adresse suivante : http://localhost:4200

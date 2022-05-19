@@ -20,7 +20,7 @@ export class AuthService {
     const user = JSON.parse(localStorage.getItem('user')) 
     if (user) {
       this.isAuth = true;
-      this.user = new User(user.username,user.token)
+      this.user = new User(user.username,user.token, user.spot)
     }
 
   }
@@ -43,17 +43,18 @@ export class AuthService {
           localStorage.setItem("user", JSON.stringify({
             "username" : res.data.username,
             "token" : res.data.token,
-            "isLogged" : true
+            "isLogged" : true,
+            "spot" : res.data.spot
           }));
 
-          this.user = new User(res.data.username,res.data.token)
-          this.router.navigate(['user']);
+          this.user = new User(res.data.username,res.data.token, res.data.spot)
+          this.router.navigate(['home']);
         } else {
-          console.log("Error auth");
+          console.log("Error auth 1");
         }
       },
       erreur => {
-        console.log("Error auth");
+        console.log("Error auth 2", erreur);
       }
     )
   }
@@ -64,7 +65,9 @@ export class AuthService {
     const body = {
       username: user.username,
       password: user.password,
+      spot: user.spot
     }
+
     this.http.post(url, body).subscribe(res => {
       this.router.navigate(['signin']);
     })
@@ -72,6 +75,8 @@ export class AuthService {
 
   logOff(){
     localStorage.removeItem("user");
+    localStorage.removeItem("data_meteo")
+    localStorage.removeItem("data_news")
     this.user = null;
     this.isAuth = false;
   }

@@ -1,7 +1,42 @@
-<section>
-    <form #f="ngForm" (ngSubmit)="onSubmitform(f)">
-        <input type="file" name="myFile" id="file" (change)="onFileChanged($event)" />
-        <!-- <input type="file" name="myFile" class="form-control mb-3" (change)="user_svc.fileEvent($event)"/> -->
-        <button class="btn btn-primary">Upload Image</button>
-    </form>
-</section>
+<div class="row">
+
+  <h1 class="text-center my-3">Gallerie photo</h1>
+
+  <div class="container add-image row">
+
+    <div class="col-6">
+      <div class="actions">
+        <div class="my-input">
+          <div class="input-group mb-3">
+            <input type="file" class="form-control" id="inputGroupFile02" (change)="onFileChanged($event)" >
+          </div>
+          <button class="btn btn-primary" (click)="onUpload()">Upload Image</button>
+          <div *ngIf="error.isError" class="alert alert-danger mt-3">{{error.message}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="image">
+        <img [src]="imageSrc" *ngIf="imageSrc" style="height: 300px; width:auto">
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <h1 class="fw-light text-center text-lg-start mt-4 mb-0 g-O"></h1>
+    <hr class="mt-2 mb-5">
+    <div *ngIf="images?.length == 0">
+      <h3 class="text-center">N'hésitez pas à ajouter des photos !</h3>
+    </div>
+    <div *ngIf="images" class="row text-center text-lg-start">
+      <div *ngFor="let image of images" class="col-lg-3 col-md-4 col-6">
+        <a class="d-block mb-4 h-100">
+          <img class="img-fluid img-thumbnail" src="../../..{{image}}" alt="">
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>

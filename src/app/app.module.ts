@@ -11,6 +11,7 @@ import { SigninComponent } from './components/auth/signin/signin.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { AngularMaterialModule } from './angular-material.module';
 import { MenuComponent } from './components/menu/menu.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MenuComponent } from './components/menu/menu.component';
     UserComponent,
     SigninComponent,
     RegisterComponent,
-    MenuComponent
+    MenuComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

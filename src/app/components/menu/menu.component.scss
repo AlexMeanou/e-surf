@@ -5,7 +5,7 @@
     height: 60px;
     display: flex;
     align-items: center;
-    background-color: #1976d2;
+    background-color: #060b11;
     color: white;
     font-weight: 600;
   }
@@ -57,3 +57,8 @@
       visibility: hidden;
     }
   }
+
+a {
+  margin-left: 2px;
+  margin-right: 2px;
+}

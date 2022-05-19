@@ -1,0 +1,145 @@
+.news {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    width: 95%;
+    // The magic
+}
+
+.news:hover {
+    .title{
+        background-color: rgba(183, 185, 185, 0.911);
+    }
+}
+
+.image {
+    border-top: 2px solid #C1B4CF;
+    border-bottom: 2px solid #C1B4CF;
+    border-radius: 15px 0px 0px 15px;
+    border-left: 2px solid #C1B4CF;
+}
+
+.title {
+    border-radius: 0px 15px 15px 0px;
+    border-top: 2px solid #C1B4CF;
+    border-right: 2px solid #C1B4CF;
+    border-bottom: 2px solid #C1B4CF;
+    text-align: left;
+    background-color: rgba(211, 213, 213, 0.904);
+    display: flex;
+    align-items: center;
+    .text {
+        margin-left: 1.5em;
+        margin-right: 1em;
+    }
+}
+
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+
+.nopadding {
+    padding: 0 !important;
+    // margin: 0 !important;
+ }
+
+.data_meteo {
+    border-radius: 40px;
+    width: 80%;
+    align-items: center;
+    align-content: center;
+    color: black;
+}
+
+.news-div {
+    width: 100%;
+    height: 88vh;
+    // box-shadow: ;
+}
+
+.news-sep {
+    width: 94%;
+    margin-top: 3.35em;
+}
+
+.temperature[data-status="chaud"] {
+    background-color: rgba(255, 115, 0, 0.719);
+    border: 3px ridge orangered;
+}
+
+.temperature[data-status="tres_chaud"] {
+    background-color: rgba(255,99,71, .7);
+    border: 3px ridge red;
+}
+
+.temperature[data-status="normal"] {
+    background-color: rgba(176,224,230, .5);
+    border: 3px ridge lightseagreen;
+}
+
+.temperature[data-status="froid"] {
+    background-color: rgba(65,105,225, .6);
+    border: 3px ridge darkblue;
+}
+
+.pression {
+    background-color: rgba(195, 195, 194, .6);
+    border: 3px ridge gray;
+}
+
+.conditions {
+    // border: 3px ridge blueviolet;
+    border-radius: 20px;
+    width: 95%;
+    margin-left: 2.5%;
+    // background-color: black;
+}
+
+.meteo {
+    width: 80%;
+    // margin-left: 2.5%;
+    // margin-bottom: 0.5em;
+    // margin-top: 2.5em;
+    // background-color: red;
+    
+    
+    form {
+        display: flex;
+        // justify-content: space-around;
+        align-items: center;
+
+        .button {
+            display: flex;
+            justify-content: center;
+        }
+
+        .select-hour {
+            width: 4em;
+        }
+
+        .mat-select {
+            width: 3em;
+            // border: 1px solid black;
+            // border-color: rgba(26, 107, 177, 0.623);
+        }
+    }
+}
+
+.waves {
+    background-color: rgba(45, 193, 230, .3);
+    border: 3px ridge blue;
+}
+
+hr {
+    vertical-align: middle;
+}
+
+.select-spot {
+    // width: 6em;
+    form {
+        display: flex;
+        align-items: center;
+    }
+}

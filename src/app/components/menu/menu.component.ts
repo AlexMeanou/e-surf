@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -8,13 +8,28 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
+  changeButton: boolean;
+
+  route : string;
 
   constructor(
     private authService : AuthService,
     private router : Router
-  ) { }
-
+  ) {
+  }
+  
   ngOnInit(): void {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        console.log(event);
+        this.route = event['url'];          
+        if (this.route == "/user") {
+          this.changeButton = false;
+        } else {
+          this.changeButton = true
+        }
+      }
+    });
   }
 
   isLogged() : boolean {
@@ -24,6 +39,16 @@ export class MenuComponent implements OnInit {
   logOff() {
     this.authService.logOff();
     this.router.navigate(['signin']);
+  }
+
+  onUser(){
+    this.changeButton = true;
+    this.router.navigate(['user']);
+  }
+
+  onHome() {
+    this.changeButton = false;
+    this.router.navigate(['home'])
   }
 
 }

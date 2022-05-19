@@ -1,9 +1,11 @@
-<mat-toolbar color="primary" class="app-header">
+<mat-toolbar color="primary" class="app-header navbar-dark bg-dark">
     <span *ngIf="!isLogged()" class="nav-tool-items">
       <a mat-button mat-raised-button routerLink="signin" routerLinkActive="active">Signin</a>
       <a mat-button mat-raised-button routerLink="register" routerLinkActive="active">Signup</a>
     </span>
     <span *ngIf="isLogged()" class="nav-tool-items">
         <a mat-button mat-raised-button (click)="logOff()" routerLinkActive="active">Disconnect</a>
+        <a *ngIf="changeButton" mat-button mat-raised-button (click)="onUser()" routerLinkActive="active">Gallery</a>
+        <a *ngIf="!changeButton" mat-button mat-raised-button (click)="onHome()" routerLinkActive="active">Home</a>
       </span>
   </mat-toolbar>

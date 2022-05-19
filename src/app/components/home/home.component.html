@@ -1,0 +1,108 @@
+<div *ngIf="!isLogged()" class="bg-image p-5 text-center shadow-1-strong rounded mb-5" 
+    style="background-image: url('../../../assets/surf_bgbis.jpg'); height: 93vh;">
+
+    <h1 class="mb-3 h1">Bienvenue</h1>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p style="font-size:20px; font-style: italic;">Merci de vous connecter, ou de créer un compte si cela n'est pas déjà fait, afin d'accéder à cette application. </p>
+    <h3>Bonne journée et bonne session !</h3>
+</div>
+
+<div *ngIf="isLogged()" class="row g-0 my-3 overflow-auto" style="height: 91.5vh;">
+    <div class="col-6 g-0">
+        <div class="text-center g-0 row select-spot">
+            <form class="row g-0 fs-5" [formGroup]="spotForm" (ngSubmit)="updateCurrentSpot()">
+                <h1 class="col-8">Voir les prédiction météo de : </h1>
+                <div class="col-2 ml-2 select-hour">
+                    <mat-select class="float-end" formControlName="spotfc" [(ngModel)]="spot">
+                        <mat-option  [value]="spot.name" *ngFor="let spot of spots">{{spot.name}}
+                        </mat-option>
+                    </mat-select>
+                </div>
+                <div class="col-2 button">
+                    <button mat-raised-button class="btn-block btn-primary">Update</button>
+                </div>
+            </form>
+        </div>
+        <div class="row g-0 meteo mt-4 mx-auto">
+            <div class="my-3" style="border-top:1px solid #000;"></div>
+            <form class="row g-0 fs-5" [formGroup]="hoursForm" (ngSubmit)="refresh_new_hour()">
+                <div class="col-5"> 
+                    <div class="fs-4 float-end">
+                    Je souhaite aller surfer dans : 
+                    </div>
+                </div>
+                <div class="col-3 ml-2 select-hour">
+                    <mat-select class="float-end" formControlName="hour" [(ngModel)]="hour_zizi">
+                        <mat-option  [value]="hour" *ngFor="let hour of hours">{{hour}}h
+                        </mat-option>
+                    </mat-select>
+                </div>
+                <div class="col-2 button">
+                    <button mat-raised-button type="submit" class="btn-block btn-primary">Update</button>
+                </div>
+                <div class="col-2 button" *ngIf="saved">
+                    <button mat-raised-button type="button" (click)="reset_current()" class="btn-block btn-dark">Reset</button>
+                </div>
+            </form>
+            <div class="my-3" style="border-bottom:1px solid #000;"></div>
+        </div>
+        <div class="conditions">
+            <h3 class="text-center my-4 text-decoration-underline" *ngIf="!saved"> Les conditions météos détaillées à l'heure actuelle :</h3>
+            <h3 class="text-center my-3 text-decoration-underline" *ngIf="saved"> Les conditions météos détaillées dans {{ hour_display }}h :</h3>
+            <div *ngIf="raw_data">
+                <div class="row g-0 data_meteo temperature my-3 mx-auto" attr.data-status="{{current_color_temp}}">
+                    <div class="col-2 text-center my-2">
+                        <img style="height: 50px; width:50px;" src="../../../assets/temperature.png">
+                    </div>
+                    <div class="col-10 fs-3">
+                        La température sur la côte est de {{ current_temperatures }} °C
+                    </div>
+                </div>
+                <div class="row g-0 data_meteo waves my-3 mx-auto">
+                    <div class="col-2 text-center my-2">
+                        <img style="height: 50px; width:50px" src="../../../assets/wave.png">
+                    </div>
+                    <div class="col-10 fs-3">
+                        Les vagues vont de {{ current_waves_min }}m à {{ current_waves_max }}m de haut avec une houle moyenne de {{ current_houle_moy }}m ! 
+                    </div>
+                </div>
+                <div class="row g-0 data_meteo my-3 mx-auto">
+                    <div class="col-2 text-center my-2">
+                        <img style="height: 70px; width:70px" src="../../../assets/wind-direction.png">
+                    </div>
+                    <div class="col-10 fs-3">
+                        <h3>Informations concernant le vent</h3>
+                        Soyent prudent, le vent souffle à {{ current_winds_speed }} noeuds en direction {{ current_winds_directions }} avec des rafales allant jusqu'a {{ current_winds_gust }} noeuds
+                    </div>
+                </div>
+                <div class="row g-0 data_meteo pression my-3 mx-auto">
+                    <div class="col-2 text-center my-2">
+                        <img style="height: 50px; width:50px" src="../../../assets/barometre.png">
+                    </div>
+                    <div class="col-10 fs-3">
+                        La pression atmosphérique est de {{ current_pressures }} bar
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <h1 class="text-center">Actualités dans le Surf</h1>
+        <div style="border-bottom:1px solid #000;" class="news-sep"></div>
+        <div *ngIf="news" class="news-div overflow-auto">
+            <a class="row news g-0 mt-4" href="https://www.surf-report.com{{ data.url }}" target="_blank" *ngFor="let data of news">
+                <div class="image col-3">
+                    <img class="" style="width:100%; border-radius: 14px 0px 0px 14px;" src="{{data.img}}">
+                </div>
+                <div class="title col-9">
+                    <div class="text">
+                        <h3>{{data.title}}</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
